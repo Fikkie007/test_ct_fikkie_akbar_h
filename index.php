@@ -80,6 +80,27 @@ class Main
         echo implode(", ", $this->nama) . "<br>";
         echo implode(", ", $this->place) . "<br>";
         echo implode(", ", $this->fruit) . "<br>";
+        echo implode(", ", array_merge($this->place, $this->fruit)) . "<br>";
+    }
+}
+
+class Pattern
+{
+    public function gambarPattern(int $cols, int $rows): void
+    {
+        $patterns = [
+            'abcxyz',
+            'xyzdef'
+        ];
+
+        for ($i = 0; $i < $rows; $i++) {
+            $pattern = $patterns[$i % count($patterns)];
+            for ($j = 0; $j < $cols; $j++) {
+                echo $pattern[$j % strlen($pattern)];
+            }
+
+            echo "<br>";
+        }
     }
 }
 
@@ -96,3 +117,6 @@ $main->setNum(77777)
         'food' => 'Rice',
     ])
     ->print();
+
+$pattern = new Pattern();
+$pattern->gambarPattern(12, 6);
